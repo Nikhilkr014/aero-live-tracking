@@ -1,0 +1,319 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+:root {
+  --glass: rgba(255,255,255,0.07);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, sans-serif;
+  background: #09090b;
+  color: white;
+  overflow-x: hidden;
+}
+
+.logo-font { font-family: 'Space Grotesk', sans-serif; }
+
+.glass {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(25px) saturate(150%);
+  -webkit-backdrop-filter: blur(25px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+}
+
+.glass-dark {
+  background: rgba(15, 23, 42, 0.65);
+  backdrop-filter: blur(35px) saturate(180%);
+  -webkit-backdrop-filter: blur(35px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.card-hover {
+  transition: all 0.3s cubic-bezier(.4,0,.2,1);
+}
+.card-hover:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+}
+
+.status-dot { animation: status-pulse 1.5s infinite; }
+@keyframes status-pulse {
+  0%,100% { opacity:1; }
+  50% { opacity:0.35; }
+}
+
+.parcel-plane { animation: flyParcel 4s linear infinite; }
+@keyframes flyParcel {
+  0% { transform: translateX(-40px) rotate(-10deg); }
+  100% { transform: translateX(200px) rotate(10deg); }
+}
+
+.progress-bar { transition: width 1.2s cubic-bezier(.4,0,.2,1); }
+
+/* Leaflet overrides */
+.leaflet-container { background: #1e293b !important; }
+.leaflet-control-attribution { display: none !important; }
+
+.leaflet-tooltip {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
+}
+
+.leaflet-tooltip-top:before,
+.leaflet-tooltip-bottom:before,
+.leaflet-tooltip-left:before,
+.leaflet-tooltip-right:before {
+  display: none !important;
+}
+
+/* Style Leaflet Zoom controls to match dark theme */
+.leaflet-bar {
+  border: 1px solid rgba(255,255,255,0.1) !important;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4) !important;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.leaflet-bar a {
+  background-color: rgba(9, 9, 11, 0.95) !important;
+  color: #f4f4f5 !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(10px) !important;
+  transition: all 0.2s;
+}
+
+.leaflet-bar a:hover {
+  background-color: rgba(39, 39, 42, 1) !important;
+  color: white !important;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 20px; }
+
+.chat-bubble-user { background: linear-gradient(90deg, #0ea5e9, #6366f1); }
+.chat-bubble-bot { background: rgba(255,255,255,0.1); }
+
+/* --- PREMIUM ANIMATIONS --- */
+
+/* Parallax Layers */
+.parallax-container {
+  perspective: 1000px;
+  overflow-x: hidden;
+}
+
+.parallax-layer {
+  transition: transform 0.1s ease-out;
+  will-change: transform;
+}
+
+/* Floating Elements */
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-15px) rotate(1deg); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float 8s ease-in-out infinite;
+  animation-delay: 2s;
+}
+
+/* Shine Effect */
+@keyframes shine {
+  0% { left: -100%; }
+  100% { left: 200%; }
+}
+
+.shine-effect {
+  position: relative;
+  overflow: hidden;
+}
+
+.shine-effect::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -100%;
+  width: 50%;
+  height: 200%;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transform: rotate(30deg);
+  animation: shine 4s infinite;
+}
+
+/* Gradient Text Animation */
+@keyframes gradient-shift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 5s ease infinite;
+}
+
+/* Reveal on Scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Wind Particles */
+@keyframes wind-flow {
+  0% { transform: translateX(-100%) translateY(0); opacity: 0; }
+  20% { opacity: 0.15; }
+  80% { opacity: 0.15; }
+  100% { transform: translateX(100vw) translateY(20px); opacity: 0; }
+}
+
+.wind-particle {
+  position: absolute;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  pointer-events: none;
+  z-index: 10;
+  animation: wind-flow 6s linear infinite;
+}
+
+/* Cockpit Mode 3D Effects */
+.perspective-container {
+  perspective: 2000px;
+}
+
+.map-viewport {
+  transform-style: preserve-3d;
+  transition: transform 1.5s cubic-bezier(0.4, 0, 0.2, 1) !important;
+  will-change: transform;
+}
+
+.cockpit-mode .map-viewport {
+  transform: rotateX(45deg) translateY(-40px) scale(1.5);
+  filter: saturate(1.1) contrast(1.1) brightness(0.95);
+}
+
+/* Ensure controls stay flat and readable */
+.cockpit-mode .glass {
+  transform: translateZ(50px);
+  backdrop-filter: blur(30px);
+}
+
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+/* Cinematic Animations */
+@keyframes scanning-pulse {
+  0% { transform: translateX(-100%); }
+  50% { transform: translateX(100%); }
+  100% { transform: translateX(-100%); }
+}
+
+.animate-scanning-pulse {
+  animation: scanning-pulse 3s ease-in-out infinite;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* --- PREMIUM TELEMETRY PATHS --- */
+.premium-flight-path {
+  stroke-dasharray: 10, 12;
+  animation: telemetry-flow 30s linear infinite !important;
+  filter: drop-shadow(0 0 5px rgba(14, 165, 233, 0.7));
+}
+
+@keyframes telemetry-flow {
+  to {
+    stroke-dashoffset: -1000;
+  }
+}
+
+/* Tactile Button Feedback */
+button, 
+.interactive-tab {
+  transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.2s, color 0.2s;
+}
+
+button:active, 
+.interactive-tab:active {
+  transform: scale(0.97) !important;
+}
+
+/* Search Focus Dynamic Glow Border */
+.search-glow-container {
+  position: relative;
+  border-radius: 1rem;
+  padding: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.search-glow-container:focus-within {
+  background: linear-gradient(135deg, #38bdf8 0%, #6366f1 50%, #d946ef 100%);
+  box-shadow: 0 0 30px -5px rgba(56, 189, 248, 0.4);
+}
+
+/* Radar Pulse Ripple for Status Indicator */
+.radar-dot-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 10px;
+  height: 10px;
+}
+
+.radar-pulse-ring {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 1px solid rgb(52, 211, 153);
+  animation: radar-ripple 2s cubic-bezier(0.1, 0.8, 0.3, 1) infinite;
+  pointer-events: none;
+}
+
+@keyframes radar-ripple {
+  0% {
+    transform: scale(0.6);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(3.5);
+    opacity: 0;
+  }
+}
+
+
