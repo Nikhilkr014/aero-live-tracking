@@ -114,7 +114,5 @@ npm run build
 
 ## 📧 Support & Contact
 
-For support, bug reporting, or features requests, contact the development lead:
-* **Lead Developer:** Nikhil Kashyap
+For support, bug reporting, or features requests, please contact:
 * **Email:** [kashyapnikhil585@gmail.com](mailto:kashyapnikhil585@gmail.com)
-* **Phone:** +91 95308 50436
